@@ -35,7 +35,7 @@ public class piglatin extends javax.swing.JFrame {
             }
             return newWord.toLowerCase();
         } else {
-            return ("Bad input");
+            return ("Enter text to see this change");
         }
     }
 
@@ -55,17 +55,26 @@ public class piglatin extends javax.swing.JFrame {
         Output = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 204));
+        setForeground(new java.awt.Color(0, 0, 204));
         setResizable(false);
 
         Title.setFont(new java.awt.Font("Ebrima", 0, 36)); // NOI18N
         Title.setText("Pig Latin Translator");
 
         Input.setColumns(20);
+        Input.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         Input.setRows(5);
+        Input.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                InputKeyTyped(evt);
+            }
+        });
         InputScrollPane.setViewportView(Input);
 
         Output.setEditable(false);
         Output.setColumns(20);
+        Output.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         Output.setRows(5);
         OutputScrollPane.setViewportView(Output);
 
@@ -75,14 +84,14 @@ public class piglatin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(InputScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(OutputScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .addComponent(InputScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(OutputScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(225, 225, 225)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Title)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(228, 228, 228))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,6 +107,10 @@ public class piglatin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void InputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InputKeyTyped
+        Output.setText(translate(Input.getText()));
+    }//GEN-LAST:event_InputKeyTyped
 
     /**
      * @param args the command line arguments
