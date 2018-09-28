@@ -76,6 +76,7 @@ public class piglatin extends javax.swing.JFrame {
         Output.setColumns(20);
         Output.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         Output.setRows(5);
+        Output.setText("Enter text to see this change");
         OutputScrollPane.setViewportView(Output);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
